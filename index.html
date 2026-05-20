@@ -12,75 +12,77 @@
     <link rel="manifest" href="./manifest.json">
     <style>
         .brand-font { font-family: 'Big Shoulders Display', sans-serif !important; letter-spacing: 0.08em !important; }
-        /* Core Brand Background & Text Colors */
-        html, body { background-color: #2E3A2C !important; color: #F4F1E7; margin: 0; padding: 0; min-height: 100vh; }
+        /* Background applied globally */
+        html, body { background-color: #2E3A2C; color: #F4F1E7; margin: 0; padding: 0; min-height: 100vh; }
     </style>
 </head>
-<body class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 pb-6" style="background-color: #2E3A2C !important;">
+<body class="selection:bg-[#4CC7C4]/30">
 
-    <header class="text-center pt-4 pb-2 flex flex-col items-center justify-center space-y-1">
-        <img src="./logo.png" alt="Trailhead Logo" class="w-32 h-32 object-contain">
-        
-        <div class="pt-1">
-            <h1 class="text-2xl font-black brand-font tracking-widest text-[#F4F1E7] leading-none">TRAILHEAD</h1>
-            <h2 class="text-4xl font-black brand-font tracking-widest text-[#A7D7E8] leading-none mt-1">BASECAMP</h2>
-        </div>
-        <p class="italic text-[#7E8689] font-serif tracking-wide text-[11px] pt-1">Train. Eat. Explore. Log everything.</p>
-    </header>
+    <div class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 pb-6">
 
-    <main class="flex-grow space-y-3.5 my-3">
-
-        <a href="./run/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
-            <div class="flex justify-between items-center">
-                <div class="text-left space-y-0.5">
-                    <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
-                    <h3 class="text-2xl font-black brand-font text-[#4CC7C4] tracking-wider leading-none">RUN</h3>
-                    <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">UESCA training plans & pace tracking</p>
-                </div>
-                <span class="text-[#5F5742] group-hover:text-[#4CC7C4] group-hover:translate-x-1 transition-all text-xl">→</span>
+        <header class="text-center pt-4 pb-2 flex flex-col items-center justify-center space-y-1">
+            <img src="./logo.png" alt="Trailhead Logo" class="w-32 h-32 object-contain">
+            
+            <div class="pt-1">
+                <h1 class="text-2xl font-black brand-font tracking-widest text-[#F4F1E7] leading-none">TRAILHEAD</h1>
+                <h2 class="text-4xl font-black brand-font tracking-widest text-[#A7D7E8] leading-none mt-1">BASECAMP</h2>
             </div>
-        </a>
+            <p class="italic text-[#7E8689] font-serif tracking-wide text-[11px] pt-1">Train. Eat. Explore. Log everything.</p>
+        </header>
 
-        <a href="./lift/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
-            <div class="flex justify-between items-center">
-                <div class="text-left space-y-0.5">
-                    <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
-                    <h3 class="text-2xl font-black brand-font text-[#BFA882] tracking-wider leading-none">LIFT</h3>
-                    <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Strength sessions, PBs & deload tracking</p>
+        <main class="flex-grow space-y-3.5 my-3">
+
+            <a href="./run/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
+                <div class="flex justify-between items-center">
+                    <div class="text-left space-y-0.5">
+                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
+                        <h3 class="text-2xl font-black brand-font text-[#4CC7C4] tracking-wider leading-none">RUN</h3>
+                        <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">UESCA training plans & pace tracking</p>
+                    </div>
+                    <span class="text-[#5F5742] group-hover:text-[#4CC7C4] group-hover:translate-x-1 transition-all text-xl">→</span>
                 </div>
-                <span class="text-[#5F5742] group-hover:text-[#BFA882] group-hover:translate-x-1 transition-all text-xl">→</span>
-            </div>
-        </a>
+            </a>
 
-        <a href="./fuel/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
-            <div class="flex justify-between items-center">
-                <div class="text-left space-y-0.5">
-                    <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
-                    <h3 class="text-2xl font-black brand-font text-[#D7883C] tracking-wider leading-none">FUEL</h3>
-                    <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Meal plan, dinner choices & body tracking</p>
+            <a href="./lift/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
+                <div class="flex justify-between items-center">
+                    <div class="text-left space-y-0.5">
+                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
+                        <h3 class="text-2xl font-black brand-font text-[#BFA882] tracking-wider leading-none">LIFT</h3>
+                        <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Strength sessions, PBs & deload tracking</p>
+                    </div>
+                    <span class="text-[#5F5742] group-hover:text-[#BFA882] group-hover:translate-x-1 transition-all text-xl">→</span>
                 </div>
-                <span class="text-[#5F5742] group-hover:text-[#D7883C] group-hover:translate-x-1 transition-all text-xl">→</span>
-            </div>
-        </a>
+            </a>
 
-        <a href="./sidequests/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
-            <div class="flex justify-between items-center">
-                <div class="text-left space-y-0.5">
-                    <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
-                    <h3 class="text-2xl font-black brand-font text-[#D6C444] tracking-wider leading-none">SIDEQUESTS</h3>
-                    <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Adventures, places & memories logged</p>
+            <a href="./fuel/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
+                <div class="flex justify-between items-center">
+                    <div class="text-left space-y-0.5">
+                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
+                        <h3 class="text-2xl font-black brand-font text-[#D7883C] tracking-wider leading-none">FUEL</h3>
+                        <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Meal plan, dinner choices & body tracking</p>
+                    </div>
+                    <span class="text-[#5F5742] group-hover:text-[#D7883C] group-hover:translate-x-1 transition-all text-xl">→</span>
                 </div>
-                <span class="text-[#5F5742] group-hover:text-[#D6C444] group-hover:translate-x-1 transition-all text-xl">→</span>
-            </div>
-        </a>
+            </a>
 
-    </main>
+            <a href="./sidequests/" class="block bg-black/20 hover:bg-black/30 border border-[#5F5742] p-4.5 rounded-xl group transition duration-300 shadow-md">
+                <div class="flex justify-between items-center">
+                    <div class="text-left space-y-0.5">
+                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase">TRAILHEAD</span>
+                        <h3 class="text-2xl font-black brand-font text-[#D6C444] tracking-wider leading-none">SIDEQUESTS</h3>
+                        <p class="text-xs text-[#F4F1E7] opacity-80 font-medium pt-0.5">Adventures, places & memories logged</p>
+                    </div>
+                    <span class="text-[#5F5742] group-hover:text-[#D6C444] group-hover:translate-x-1 transition-all text-xl">→</span>
+                </div>
+            </a>
 
-    <footer class="text-center text-[9px] text-[#5C6D73] font-bold uppercase tracking-widest pt-2">
-        Trailhead System Engine v2.1
-    </footer>
+        </main>
 
-    <script>
+        <footer class="text-center text-[9px] text-[#5C6D73] font-bold uppercase tracking-widest pt-2">
+            Trailhead System Engine v2.1
+        </footer>
+
+    </div> <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./sw.js')
                 .then(() => console.log('Trailhead Engine Registered Offline'))

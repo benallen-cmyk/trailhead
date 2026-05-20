@@ -21,13 +21,18 @@
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Smooth transitions for interactive elements */
+        /* Smooth transitions */
         .toggle-btn { transition: all 0.2s ease; }
         .toggle-btn.active { background-color: #4CC7C4; color: #1a241e; border-color: #4CC7C4; }
 
-        /* Modal Animation */
+        /* Animations */
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .hidden-section { display: none; }
+        
         .modal-enter { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .modal-exit { animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideDown { from { transform: translateY(0); opacity: 1; } to { transform: translateY(100%); opacity: 0; } }
     </style>
@@ -42,17 +47,17 @@
             </a>
             <div class="text-right">
                 <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
-                <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">UESCA Engine V1</p>
+                <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">UESCA Protocol</p>
             </div>
         </header>
 
-        <main class="flex-grow space-y-5 animate-[fadeIn_0.5s_ease-out]">
-
+        <main id="view-setup" class="flex-grow space-y-5 fade-in">
+            
             <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl shadow-lg relative overflow-hidden">
-                <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-3">Engine Configuration</h3>
+                <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-4">Plan Builder</h3>
                 
-                <div class="mb-4">
-                    <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase mb-2">1. Target Distance</p>
+                <div class="mb-5">
+                    <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase mb-2">Target Event Distance</p>
                     <div class="flex flex-wrap gap-2" id="distance-selector">
                         <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="5k">5K</button>
                         <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="10k">10K</button>
@@ -64,9 +69,253 @@
 
                 <div>
                     <div class="flex justify-between items-end mb-2">
-                        <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase">2. Training Days</p>
-                        <p class="text-[10px] text-[#4CC7C4] font-bold" id="rec-days">Recommended: 4-5 Days</p>
+                        <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase">Weekly Runs</p>
+                        <p class="text-[10px] text-[#4CC7C4] font-bold" id="rec-days">Suggested: 4-5 Days</p>
                     </div>
-                    <div class="flex justify-between gap-1" id="day-selector">
-                        <button class="toggle-btn w-10 h-10 rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7]">M</button>
-                        <button class="toggle-btn active w-10 h-10 rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F
+                    <div class="grid grid-cols-7 gap-1.5 w-full" id="day-selector">
+                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">M</button>
+                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">T</button>
+                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">W</button>
+                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">T</button>
+                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">F</button>
+                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">S</button>
+                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7] flex items-center justify-center">S</button>
+                    </div>
+                    <p class="text-[9px] text-[#7E8689] mt-2 italic text-right" id="day-counter">4 days selected.</p>
+                </div>
+
+                <button onclick="generatePlan()" class="w-full mt-6 bg-[#4CC7C4]/10 hover:bg-[#4CC7C4]/20 border border-[#4CC7C4]/50 text-[#4CC7C4] font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition-colors active:scale-[0.98]">
+                    Generate Training Plan
+                </button>
+            </section>
+        </main>
+
+        <main id="view-dashboard" class="flex-grow space-y-5 hidden-section">
+
+            <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-4 rounded-2xl shadow-lg relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#4CC7C4]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+                
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-[9px] font-bold text-[#4CC7C4] tracking-widest uppercase flex items-center gap-1.5 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#4CC7C4] animate-pulse"></span> Richmond Marathon
+                        </span>
+                        <h2 class="text-xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none">WEEK 04 <span class="text-[#5F5742]">/ 16</span></h2>
+                    </div>
+                    <div class="text-right">
+                        <span class="block text-[10px] text-[#7E8689] font-bold uppercase">Target</span>
+                        <span class="block text-lg font-black brand-font text-[#F4F1E7] leading-none pt-0.5">3:50<span class="text-xs font-sans text-[#7E8689]"> hr</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex justify-between items-end mb-2 px-1">
+                    <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest">Target Paces</h3>
+                    <p class="text-[9px] text-[#5F5742] uppercase tracking-widest">Baseline: 22:30 5K</p>
+                </div>
+                
+                <div class="flex gap-3 overflow-x-auto hide-scroll pb-2 snap-x">
+                    <div class="snap-start shrink-0 w-32 bg-black/15 backdrop-blur-md border border-[#5F5742]/40 rounded-xl p-3 flex flex-col justify-between">
+                        <span class="text-[9px] font-bold text-[#4CC7C4] tracking-widest uppercase">Easy / Long</span>
+                        <span class="text-lg font-black brand-font text-[#F4F1E7] pt-1">5:45<span class="text-xs font-sans text-[#7E8689] font-normal ml-1">/km</span></span>
+                    </div>
+                    <div class="snap-start shrink-0 w-32 bg-black/15 backdrop-blur-md border border-[#5F5742]/40 rounded-xl p-3 flex flex-col justify-between border-b-2 border-b-[#D7883C]">
+                        <span class="text-[9px] font-bold text-[#D7883C] tracking-widest uppercase">Tempo</span>
+                        <span class="text-lg font-black brand-font text-[#F4F1E7] pt-1">5:05<span class="text-xs font-sans text-[#7E8689] font-normal ml-1">/km</span></span>
+                    </div>
+                    <div class="snap-start shrink-0 w-32 bg-black/15 backdrop-blur-md border border-[#5F5742]/40 rounded-xl p-3 flex flex-col justify-between border-b-2 border-b-[#D6C444]">
+                        <span class="text-[9px] font-bold text-[#D6C444] tracking-widest uppercase">Intervals</span>
+                        <span class="text-lg font-black brand-font text-[#F4F1E7] pt-1">4:35<span class="text-xs font-sans text-[#7E8689] font-normal ml-1">/km</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex justify-between gap-2 overflow-x-auto hide-scroll pb-2">
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/30 bg-black/20 flex flex-col items-center justify-center opacity-60">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Mon</span>
+                        <span class="text-[#4CC7C4] text-lg font-black mt-0.5">✓</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/30 bg-black/20 flex flex-col items-center justify-center opacity-60">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Tue</span>
+                        <span class="text-xs font-bold text-[#7E8689] mt-1">Rest</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#4CC7C4] bg-[#4CC7C4]/10 shadow-[0_0_15px_rgba(76,199,196,0.15)] flex flex-col items-center justify-center transform scale-105 transition-transform">
+                        <span class="text-[9px] font-bold text-[#4CC7C4] uppercase">Wed</span>
+                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Int</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Thu</span>
+                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Easy</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Fri</span>
+                        <span class="text-xs font-bold text-[#7E8689] mt-1">Rest</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Sat</span>
+                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Easy</span>
+                    </button>
+                    <button class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center">
+                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Sun</span>
+                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Long</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl relative overflow-hidden">
+                <div class="flex justify-between items-end border-b border-[#5F5742]/30 pb-3 mb-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-1">Today's Route</h3>
+                        <h4 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none">6 x 800m REPEATS</h4>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-[#7E8689]">Est. Distance</p>
+                        <p class="text-lg font-black brand-font text-[#4CC7C4]">8.5 <span class="text-xs font-sans font-normal text-[#F4F1E7]">km</span></p>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between items-center bg-black/20 p-3 rounded-lg border border-[#5F5742]/20">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-6 bg-[#7E8689] rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-[#7E8689] uppercase tracking-wider">Warm Up</p>
+                                <p class="text-sm font-bold text-[#F4F1E7]">2.0 km</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-[#F4F1E7]">5:45 <span class="text-[10px] text-[#7E8689] font-normal">/km</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-[#4CC7C4]/10 p-3 rounded-lg border border-[#4CC7C4]/30">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-6 bg-[#4CC7C4] rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-[#4CC7C4] uppercase tracking-wider">Effort</p>
+                                <p class="text-sm font-bold text-[#F4F1E7]">6 x 800m</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-[#4CC7C4]">4:35 <span class="text-[10px] text-[#4CC7C4]/70 font-normal">/km</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-black/20 p-3 rounded-lg border border-[#5F5742]/20">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-6 bg-[#5F5742] rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-[#7E8689] uppercase tracking-wider">Recovery</p>
+                                <p class="text-sm font-bold text-[#F4F1E7]">6 x 90s</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-[#7E8689]">Walk/Jog</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="openLogModal()" class="w-full bg-[#4CC7C4]/10 hover:bg-[#4CC7C4]/20 active:scale-[0.98] border border-[#4CC7C4]/50 text-[#4CC7C4] font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all">
+                    Log Activity
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <div id="logModal" class="fixed inset-0 z-50 flex items-end justify-center hidden">
+        <div class="absolute inset-0 bg-[#2E3A2C]/80 backdrop-blur-md" onclick="closeLogModal()"></div>
+        
+        <div class="relative w-full max-w-md bg-[#1a241e] border-t border-[#5F5742]/50 rounded-t-3xl p-6 pb-12 modal-enter">
+            <div class="w-12 h-1.5 bg-[#5F5742]/40 rounded-full mx-auto mb-6"></div>
+            
+            <h3 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wider mb-1">LOG ACTIVITY</h3>
+            <p class="text-xs text-[#7E8689] mb-6">Paces will recalibrate based on this effort.</p>
+
+            <div class="space-y-4">
+                <div class="bg-black/30 border border-[#5F5742]/30 rounded-xl p-3 flex justify-between items-center">
+                    <label class="text-xs font-bold text-[#7E8689] uppercase tracking-widest">Avg Pace (Effort)</label>
+                    <div class="flex items-baseline gap-1">
+                        <input type="text" placeholder="4:30" class="w-16 bg-transparent text-right text-xl font-bold text-[#F4F1E7] focus:outline-none placeholder:text-[#5F5742]">
+                        <span class="text-[10px] text-[#7E8689]">/km</span>
+                    </div>
+                </div>
+
+                <div class="bg-black/30 border border-[#5F5742]/30 rounded-xl p-3 flex justify-between items-center">
+                    <label class="text-xs font-bold text-[#7E8689] uppercase tracking-widest">Avg Heart Rate</label>
+                    <div class="flex items-baseline gap-1">
+                        <input type="number" placeholder="172" class="w-16 bg-transparent text-right text-xl font-bold text-[#F4F1E7] focus:outline-none placeholder:text-[#5F5742]">
+                        <span class="text-[10px] text-[#7E8689]">bpm</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="saveAndRecalculate()" class="w-full mt-8 bg-[#4CC7C4] text-[#1a241e] font-black text-sm uppercase tracking-widest py-4 rounded-xl active:scale-[0.98] transition-transform">
+                Save & Recalculate
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Plan Builder Setup Logic
+        const engineLogic = { '5k': '3-4 Days', '10k': '3-4 Days', 'half': '4-5 Days', 'marathon': '4-5 Days', 'ultra': '5-6 Days' };
+        
+        // Distance toggles
+        document.querySelectorAll('#distance-selector .toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('#distance-selector .toggle-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                document.getElementById('rec-days').innerText = `Suggested: ${engineLogic[e.target.dataset.dist]}`;
+            });
+        });
+
+        // Day toggles
+        document.querySelectorAll('#day-selector .toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.classList.toggle('active');
+                const activeCount = document.querySelectorAll('#day-selector .toggle-btn.active').length;
+                document.getElementById('day-counter').innerText = `${activeCount} day${activeCount !== 1 ? 's' : ''} selected.`;
+            });
+        });
+
+        // 2. View Switching Logic (Builder -> Dashboard)
+        function generatePlan() {
+            const setupView = document.getElementById('view-setup');
+            const dashView = document.getElementById('view-dashboard');
+            
+            // Hide setup, show dashboard
+            setupView.classList.add('hidden-section');
+            dashView.classList.remove('hidden-section');
+            dashView.classList.add('fade-in');
+        }
+
+        // 3. Modal Logic
+        const logModal = document.getElementById('logModal');
+        const modalContent = logModal.querySelector('.relative');
+
+        function openLogModal() {
+            logModal.classList.remove('hidden');
+            modalContent.classList.remove('modal-exit');
+            modalContent.classList.add('modal-enter');
+        }
+
+        function closeLogModal() {
+            modalContent.classList.remove('modal-enter');
+            modalContent.classList.add('modal-exit');
+            setTimeout(() => { logModal.classList.add('hidden'); }, 300);
+        }
+
+        function saveAndRecalculate() {
+            const btn = document.querySelector('#logModal button');
+            btn.innerHTML = 'CALCULATING...';
+            btn.classList.replace('bg-[#4CC7C4]', 'bg-[#F4F1E7]');
+            setTimeout(() => {
+                closeLogModal();
+                btn.innerHTML = 'Save & Recalculate';
+                btn.classList.replace('bg-[#F4F1E7]', 'bg-[#4CC7C4]');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trailhead RUN</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2E3A2C">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .brand-font { font-family: 'Big Shoulders Display', sans-serif !important; letter-spacing: 0.08em !important; }
+        html, body { background-color: #2E3A2C; color: #F4F1E7; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth transitions for interactive elements */
+        .toggle-btn { transition: all 0.2s ease; }
+        .toggle-btn.active { background-color: #4CC7C4; color: #1a241e; border-color: #4CC7C4; }
+
+        /* Modal Animation */
+        .modal-enter { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .modal-exit { animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideDown { from { transform: translateY(0); opacity: 1; } to { transform: translateY(100%); opacity: 0; } }
+    </style>
+</head>
+<body class="selection:bg-[#4CC7C4]/30 antialiased relative">
+
+    <div class="max-w-md mx-auto min-h-screen flex flex-col p-5 pb-8 relative z-10">
+
+        <header class="flex justify-between items-center pb-5 pt-2">
+            <a href="../index.html" class="text-[#7E8689] hover:text-[#4CC7C4] transition-colors flex items-center gap-1 text-sm font-semibold uppercase tracking-widest">
+                <span>←</span> Basecamp
+            </a>
+            <div class="text-right">
+                <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
+                <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">UESCA Engine V1</p>
+            </div>
+        </header>
+
+        <main class="flex-grow space-y-5 animate-[fadeIn_0.5s_ease-out]">
+
+            <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+                <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-3">Engine Configuration</h3>
+                
+                <div class="mb-4">
+                    <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase mb-2">1. Target Distance</p>
+                    <div class="flex flex-wrap gap-2" id="distance-selector">
+                        <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="5k">5K</button>
+                        <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="10k">10K</button>
+                        <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="half">Half</button>
+                        <button class="toggle-btn active border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="marathon">Marathon</button>
+                        <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-1.5 px-3 rounded-lg bg-black/20" data-dist="ultra">Ultra</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-end mb-2">
+                        <p class="text-[10px] text-[#F4F1E7] font-semibold uppercase">2. Training Days</p>
+                        <p class="text-[10px] text-[#4CC7C4] font-bold" id="rec-days">Recommended: 4-5 Days</p>
+                    </div>
+                    <div class="flex justify-between gap-1" id="day-selector">
+                        <button class="toggle-btn w-10 h-10 rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F1E7]">M</button>
+                        <button class="toggle-btn active w-10 h-10 rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold text-[#F4F

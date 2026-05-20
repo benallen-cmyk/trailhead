@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trailhead Basecamp</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2E3A2C">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,8 +18,7 @@
     <style>
         .brand-font { font-family: 'Big Shoulders Display', sans-serif !important; letter-spacing: 0.08em !important; }
         html, body { background-color: #2E3A2C; color: #F4F1E7; margin: 0; padding: 0; min-height: 100vh; }
-        /* Smooth scrolling for a native feel */
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     </style>
 </head>
 <body class="selection:bg-[#4CC7C4]/30 antialiased">
@@ -33,12 +37,9 @@
 
         <main class="flex-grow space-y-4 my-4 animate-[fadeIn_0.5s_ease-out]">
 
-            <a href="./run/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/30 hover:border-[#4CC7C4]/60 hover:shadow-[0_8px_25px_-5px_rgba(76,199,196,0.25)]">
+            <a href="./run/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 active:scale-[0.98] active:bg-black/40 hover:border-[#4CC7C4]/60 hover:shadow-[0_8px_25px_-5px_rgba(76,199,196,0.25)]">
                 <div class="flex justify-between items-center">
                     <div class="text-left space-y-0.5">
-                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase flex items-center gap-1.5">
-                            <span class="w-1 h-1 rounded-full bg-[#4CC7C4] opacity-50 group-hover:opacity-100 transition-opacity"></span> Module 01
-                        </span>
                         <h3 class="text-3xl font-black brand-font text-[#4CC7C4] tracking-wider leading-none">RUN</h3>
                         <p class="text-xs text-[#F4F1E7] opacity-70 font-medium pt-1 group-hover:opacity-100 transition-opacity">UESCA training plans & pace tracking</p>
                     </div>
@@ -46,12 +47,9 @@
                 </div>
             </a>
 
-            <a href="./lift/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/30 hover:border-[#BFA882]/60 hover:shadow-[0_8px_25px_-5px_rgba(191,168,130,0.25)]">
+            <a href="./lift/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 active:scale-[0.98] active:bg-black/40 hover:border-[#BFA882]/60 hover:shadow-[0_8px_25px_-5px_rgba(191,168,130,0.25)]">
                 <div class="flex justify-between items-center">
                     <div class="text-left space-y-0.5">
-                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase flex items-center gap-1.5">
-                            <span class="w-1 h-1 rounded-full bg-[#BFA882] opacity-50 group-hover:opacity-100 transition-opacity"></span> Module 02
-                        </span>
                         <h3 class="text-3xl font-black brand-font text-[#BFA882] tracking-wider leading-none">LIFT</h3>
                         <p class="text-xs text-[#F4F1E7] opacity-70 font-medium pt-1 group-hover:opacity-100 transition-opacity">Strength sessions, PBs & deload tracking</p>
                     </div>
@@ -59,12 +57,9 @@
                 </div>
             </a>
 
-            <a href="./fuel/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/30 hover:border-[#D7883C]/60 hover:shadow-[0_8px_25px_-5px_rgba(215,136,60,0.25)]">
+            <a href="./fuel/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 active:scale-[0.98] active:bg-black/40 hover:border-[#D7883C]/60 hover:shadow-[0_8px_25px_-5px_rgba(215,136,60,0.25)]">
                 <div class="flex justify-between items-center">
                     <div class="text-left space-y-0.5">
-                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase flex items-center gap-1.5">
-                            <span class="w-1 h-1 rounded-full bg-[#D7883C] opacity-50 group-hover:opacity-100 transition-opacity"></span> Module 03
-                        </span>
                         <h3 class="text-3xl font-black brand-font text-[#D7883C] tracking-wider leading-none">FUEL</h3>
                         <p class="text-xs text-[#F4F1E7] opacity-70 font-medium pt-1 group-hover:opacity-100 transition-opacity">Meal plan, dinner choices & body tracking</p>
                     </div>
@@ -72,12 +67,9 @@
                 </div>
             </a>
 
-            <a href="./sidequests/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/30 hover:border-[#D6C444]/60 hover:shadow-[0_8px_25px_-5px_rgba(214,196,68,0.25)]">
+            <a href="./sidequests/" class="block bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl group transition-all duration-300 ease-out hover:-translate-y-1 active:scale-[0.98] active:bg-black/40 hover:border-[#D6C444]/60 hover:shadow-[0_8px_25px_-5px_rgba(214,196,68,0.25)]">
                 <div class="flex justify-between items-center">
                     <div class="text-left space-y-0.5">
-                        <span class="text-[9px] font-bold text-[#7E8689] tracking-widest uppercase flex items-center gap-1.5">
-                            <span class="w-1 h-1 rounded-full bg-[#D6C444] opacity-50 group-hover:opacity-100 transition-opacity"></span> Module 04
-                        </span>
                         <h3 class="text-3xl font-black brand-font text-[#D6C444] tracking-wider leading-none">SIDEQUESTS</h3>
                         <p class="text-xs text-[#F4F1E7] opacity-70 font-medium pt-1 group-hover:opacity-100 transition-opacity">Adventures, places & memories logged</p>
                     </div>
@@ -89,7 +81,7 @@
 
         <footer class="text-center pt-4">
             <div class="w-12 h-1 mx-auto bg-[#5F5742]/30 rounded-full mb-3"></div>
-            <p class="text-[9px] text-[#5C6D73] font-bold uppercase tracking-widest">Trailhead System Engine v3.0</p>
+            <p class="text-[9px] text-[#5C6D73] font-bold uppercase tracking-widest">Project 321 // System Engine Active</p>
         </footer>
 
     </div>

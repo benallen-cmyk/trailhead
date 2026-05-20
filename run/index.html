@@ -25,8 +25,14 @@
         .toggle-btn.active { background-color: #4CC7C4; color: #1a241e; border-color: #4CC7C4; }
 
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
-        .hidden-section { display: none; }
+        .hidden-section { display: none !important; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Modal Animation */
+        .modal-enter { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .modal-exit { animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideDown { from { transform: translateY(0); opacity: 1; } to { transform: translateY(100%); opacity: 0; } }
         
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.5; cursor: pointer; }
         select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237E8689' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
@@ -61,82 +67,4 @@
                     <div class="flex gap-3">
                         <div class="w-1/2">
                             <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Date</label>
-                            <input type="date" id="input-race-date" value="2026-09-13"
-                                   class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors text-sm">
-                        </div>
-                        <div class="w-1/2">
-                            <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Time</label>
-                            <input type="text" id="input-target-time" value="3:50:00" 
-                                   class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors text-sm">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-2 block">Event Distance</label>
-                        <div class="flex flex-wrap gap-2" id="distance-selector">
-                            <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="5k">5K</button>
-                            <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="10k">10K</button>
-                            <button class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="half">Half</button>
-                            <button class="toggle-btn active border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="marathon">Marathon</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-6 pb-6 border-b border-[#5F5742]/30">
-                    <label class="text-[10px] text-[#4CC7C4] font-bold uppercase tracking-widest mb-1.5 block">Current Fitness Baseline</label>
-                    <p class="text-[10px] text-[#7E8689] mb-3 leading-snug">Enter a recent race or hard effort. This anchors the math for your target training paces.</p>
-                    
-                    <div class="flex gap-3">
-                        <select id="baseline-dist" class="w-1/3 bg-black/20 border border-[#5F5742]/40 rounded-xl px-3 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 text-sm font-bold">
-                            <option value="5k" selected>5K</option>
-                            <option value="10k">10K</option>
-                            <option value="half">Half</option>
-                        </select>
-                        <input type="text" id="baseline-time" value="22:30" 
-                               class="w-2/3 bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors text-sm">
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-end mb-2">
-                        <p class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest">Training Days</p>
-                        <p class="text-[10px] text-[#4CC7C4] font-bold" id="rec-days">Suggested: 4-5 Days</p>
-                    </div>
-                    <div class="grid grid-cols-7 gap-1.5 w-full" id="setup-day-selector">
-                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">M</button>
-                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">T</button>
-                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">W</button>
-                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">T</button>
-                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">F</button>
-                        <button class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">S</button>
-                        <button class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">S</button>
-                    </div>
-                </div>
-
-                <button onclick="generateOverview()" class="w-full mt-8 bg-[#4CC7C4] text-[#1a241e] font-black text-sm uppercase tracking-widest py-4 rounded-xl shadow-[0_8px_20px_-5px_rgba(76,199,196,0.4)] active:scale-[0.98] transition-all">
-                    Generate Plan
-                </button>
-            </section>
-        </main>
-
-        <main id="view-overview" class="flex-grow space-y-5 hidden-section">
-            
-            <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl shadow-lg relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-[#4CC7C4]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
-                
-                <h2 id="overview-race-name" class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none uppercase mb-1">RICHMOND MARATHON</h2>
-                <div class="flex justify-between items-center border-b border-[#5F5742]/30 pb-3 mb-4">
-                    <p id="overview-race-date" class="text-xs text-[#7E8689] font-bold uppercase tracking-widest">Sep 13, 2026</p>
-                    <p id="overview-target" class="text-xs text-[#4CC7C4] font-bold uppercase tracking-widest">Target: 3:50:00</p>
-                </div>
-
-                <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-4">16-Week Progression</h3>
-                
-                <div class="space-y-3">
-                    <div class="bg-black/20 border border-[#5F5742]/30 rounded-xl p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[10px] font-bold text-[#A7D7E8] uppercase tracking-widest">Phase 1: Base</span>
-                            <span class="text-[10px] text-[#7E8689] font-bold uppercase">Weeks 1-4</span>
-                        </div>
-                        <p class="text-xs text-[#F4F1E7] opacity-80 mb-3">Building aerobic engine. 80% Easy/Long, 20% Strides.</p>
-                        <button onclick="openWeek(1)" class="w-full bg-[#A7D7E8]/10 hover:bg-[#A7D7E8]/20 border border-[#A7D7E8]/30 text-[#A7D7E8] text-
+                            <input

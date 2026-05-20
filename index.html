@@ -11,17 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="manifest" href="./manifest.json">
     <style>
-        /* Forcing custom font priorities over standard styles */
         .brand-font { font-family: 'Big Shoulders Display', sans-serif !important; letter-spacing: 0.08em !important; }
         body { font-family: 'Inter', sans-serif; background-color: #1a241e; color: #f4f6f4; }
     </style>
 </head>
 <body class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 pb-12 selection:bg-emerald-800">
 
-    <header class="text-center pt-8 pb-6 flex flex-col items-center justify-center space-y-2">
-        <div class="mb-2 text-emerald-500 text-4xl select-none leading-none tracking-tighter font-black">
-            ▲<br><span class="text-xl relative -top-3">▲▲</span>
-        </div>
+    <header class="text-center pt-6 pb-4 flex flex-col items-center justify-center space-y-2">
+        <img src="./icon-512.png" alt="Trailhead Logo" class="w-32 h-32 object-contain mb-1 drop-shadow-md">
+        
         <div>
             <h1 class="text-2xl font-black brand-font tracking-widest text-stone-300 leading-none">TRAILHEAD</h1>
             <h2 class="text-4xl font-black brand-font tracking-widest text-emerald-500 leading-none mt-1">BASECAMP</h2>
@@ -64,44 +62,4 @@
             </div>
         </a>
 
-        <a href="./sidequests/" class="block bg-stone-900/50 hover:bg-stone-900/80 border border-stone-850 p-5 rounded-xl group transition duration-300 shadow-md">
-            <div class="flex justify-between items-center">
-                <div class="text-left space-y-0.5">
-                    <span class="text-[10px] font-bold text-stone-500 tracking-widest uppercase">TRAILHEAD</span>
-                    <h3 class="text-2xl font-black brand-font text-yellow-500 tracking-wider leading-none">SIDEQUESTS</h3>
-                    <p class="text-xs text-stone-400 font-medium pt-1">Adventures, places & memories logged</p>
-                </div>
-                <span class="text-stone-500 group-hover:text-yellow-500 group-hover:translate-x-1 transition-all text-xl">→</span>
-            </div>
-        </a>
-
-    </main>
-
-    <footer class="text-center text-[10px] text-stone-600 font-bold uppercase tracking-widest pt-4">
-        Trailhead System Engine v2.0
-    </footer>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
-                .then(() => console.log('Trailhead Engine Registered Offline'))
-                .catch(err => console.error('Offline Engine Failed:', err));
-        }
-    </script>
-</body>
-</html>
-    </main>
-
-    <footer class="text-center text-[10px] text-stone-600 font-bold uppercase tracking-widest pt-4">
-        Trailhead System Engine v2.0
-    </footer>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
-                .then(() => console.log('Trailhead Engine Registered Offline'))
-                .catch(err => console.error('Offline Engine Failed:', err));
-        }
-    </script>
-</body>
-</html>
+        

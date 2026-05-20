@@ -12,14 +12,14 @@
     <link rel="manifest" href="./manifest.json">
     <style>
         .brand-font { font-family: 'Big Shoulders Display', sans-serif !important; letter-spacing: 0.08em !important; }
-        /* Changing the global background to EXACTLY match your logo canvas background */
-        body { font-family: 'Inter', sans-serif; background-color: #233324; color: #f4f6f4; }
+        /* Hard-locking the exact background color of your logo file to the entire screen */
+        html, body { background-color: #243324 !important; color: #f4f6f4; margin: 0; padding: 0; min-height: 100vh; }
     </style>
 </head>
-<body class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 pb-6 selection:bg-emerald-800">
+<body class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 pb-6 selection:bg-emerald-800" style="background-color: #243324 !important;">
 
     <header class="text-center pt-4 pb-2 flex flex-col items-center justify-center space-y-1">
-        <img src="./icon-512.png" alt="Trailhead Logo" class="w-28 h-28 object-contain drop-shadow-md">
+        <img src="./icon-512.png" alt="Trailhead Logo" class="w-28 h-28 object-contain mix-blend-normal">
         
         <div class="pt-1">
             <h1 class="text-2xl font-black brand-font tracking-widest text-stone-200 leading-none">TRAILHEAD</h1>
@@ -67,6 +67,28 @@
             <div class="flex justify-between items-center">
                 <div class="text-left space-y-0.5">
                     <span class="text-[9px] font-bold text-stone-400 tracking-widest uppercase">TRAILHEAD</span>
+                    <h3 class="text-2xl font-black brand-font text-yellow-500 tracking-wider leading-none">SIDEQUESTS</h3>
+                    <p class="text-xs text-stone-300 font-medium pt-0.5">Adventures, places & memories logged</p>
+                </div>
+                <span class="text-stone-400 group-hover:text-yellow-500 group-hover:translate-x-1 transition-all text-xl">→</span>
+            </div>
+        </a>
+
+    </main>
+
+    <footer class="text-center text-[9px] text-stone-400 font-bold uppercase tracking-widest pt-2">
+        Trailhead System Engine v2.0
+    </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Trailhead Engine Registered Offline'))
+                .catch(err => console.error('Offline Engine Failed:', err));
+        }
+    </script>
+</body>
+</html>
                     <h3 class="text-2xl font-black brand-font text-yellow-500 tracking-wider leading-none">SIDEQUESTS</h3>
                     <p class="text-xs text-stone-300 font-medium pt-0.5">Adventures, places & memories logged</p>
                 </div>

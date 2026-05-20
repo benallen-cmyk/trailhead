@@ -34,8 +34,10 @@
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideDown { from { transform: translateY(0); opacity: 1; } to { transform: translateY(100%); opacity: 0; } }
         
+        /* Force Mobile inputs to render properly */
+        input[type="date"] { appearance: none; -webkit-appearance: none; min-height: 48px; }
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.5; cursor: pointer; }
-        select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237E8689' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
+        select { -webkit-appearance: none; appearance: none; min-height: 48px; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237E8689' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
     </style>
 </head>
 <body class="selection:bg-[#4CC7C4]/30 antialiased relative">
@@ -61,10 +63,10 @@
                     <div>
                         <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Event Name</label>
                         <input type="text" id="input-race-name" value="Richmond Marathon" 
-                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors">
+                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block">
                     </div>
                     
-                    <div class="flex gap-3">
-                        <div class="w-1/2">
-                            <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Date</label>
-                            <input
+                    <div>
+                        <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Date</label>
+                        <input type="date" id="input-race-date" value="2026-09-13"
+                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-

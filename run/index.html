@@ -32,10 +32,10 @@
         .toggle-btn { transition: all 0.2s ease; }
         .toggle-btn.active { background-color: #4CC7C4; color: #1a241e; border-color: #4CC7C4; }
 
-        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        .hidden-section { display: none !important; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Modal Animation */
         .modal-enter { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .modal-exit { animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -50,38 +50,35 @@
 
     <div class="max-w-md mx-auto min-h-screen flex flex-col p-5 pb-8 relative z-10">
 
-        <header class="flex justify-between items-center pb-5 pt-2">
-            <a href="../index.html" class="text-[#7E8689] hover:text-[#4CC7C4] transition-colors flex items-center gap-1 text-sm font-semibold uppercase tracking-widest">
-                <span>←</span> Basecamp
-            </a>
-            <div class="text-right">
-                <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
-                <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">Training Protocol</p>
-            </div>
-        </header>
-
         <main id="view-setup" class="flex-grow space-y-5 fade-in" style="display: block;">
             
+            <header class="flex justify-between items-center pb-2 pt-2">
+                <a href="../index.html" class="text-[#7E8689] hover:text-[#4CC7C4] transition-colors flex items-center gap-1 text-sm font-semibold uppercase tracking-widest">
+                    <span>←</span> Basecamp
+                </a>
+                <div class="text-right">
+                    <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
+                    <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">Training Protocol</p>
+                </div>
+            </header>
+
             <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl shadow-lg">
                 <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-5">Plan Builder</h3>
                 
                 <div class="space-y-4 mb-6 pb-6 border-b border-[#5F5742]/30">
                     <div>
                         <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Event Name</label>
-                        <input type="text" id="input-race-name" value="Richmond Marathon" 
-                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block">
+                        <input type="text" id="input-race-name" value="Richmond Marathon" class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block">
                     </div>
                     
                     <div>
                         <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Date</label>
-                        <input type="date" id="input-race-date" value="2026-09-13"
-                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block text-sm">
+                        <input type="date" id="input-race-date" value="2026-09-13" class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block text-sm">
                     </div>
 
                     <div>
                         <label class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest mb-1.5 block">Target Time</label>
-                        <input type="text" id="input-target-time" value="3:50:00" 
-                               class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block text-sm">
+                        <input type="text" id="input-target-time" value="3:50:00" class="w-full bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors block text-sm">
                     </div>
 
                     <div class="pt-2">
@@ -91,39 +88,38 @@
                             <button type="button" class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="10k">10K</button>
                             <button type="button" class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="half">Half</button>
                             <button type="button" class="toggle-btn active border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="marathon">Marathon</button>
-                            <button type="button" class="toggle-btn border border-[#5F5742] text-[#F4F1E7] text-xs font-bold py-2 px-3 rounded-lg bg-black/20" data-dist="ultra">Ultra</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-6 pb-6 border-b border-[#5F5742]/30">
                     <label class="text-[10px] text-[#4CC7C4] font-bold uppercase tracking-widest mb-1.5 block">Current Fitness Baseline</label>
-                    <p class="text-[10px] text-[#7E8689] mb-3 leading-snug">Enter a recent race or hard effort. This anchors the math for your target training paces.</p>
-                    
+                    <p class="text-[10px] text-[#7E8689] mb-3 leading-snug">Enter a recent race or hard effort to anchor the pace engine.</p>
                     <div class="space-y-3">
                         <select id="baseline-dist" class="w-full block bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 text-sm font-bold">
                             <option value="5k" selected>5K Result</option>
                             <option value="10k">10K Result</option>
                             <option value="half">Half Marathon Result</option>
                         </select>
-                        <input type="text" id="baseline-time" value="22:30" placeholder="MM:SS"
-                               class="w-full block bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors text-sm">
+                        <input type="text" id="baseline-time" value="22:30" placeholder="MM:SS" class="w-full block bg-black/20 border border-[#5F5742]/40 rounded-xl px-4 py-3 text-[#F4F1E7] focus:outline-none focus:border-[#4CC7C4]/50 transition-colors text-sm">
                     </div>
                 </div>
 
                 <div>
-                    <div class="flex justify-between items-end mb-2">
-                        <p class="text-[10px] text-[#7E8689] font-bold uppercase tracking-widest">Training Days</p>
-                        <p class="text-[10px] text-[#4CC7C4] font-bold" id="rec-days">Suggested: 4-5 Days</p>
+                    <div class="flex justify-between items-end mb-3">
+                        <div>
+                            <p id="day-prompt" class="text-[10px] text-[#D7883C] font-bold uppercase tracking-widest transition-colors">1. Select Long Run day</p>
+                        </div>
+                        <button type="button" onclick="resetDays()" class="text-[9px] text-[#7E8689] uppercase font-bold tracking-widest hover:text-[#F4F1E7]">Reset</button>
                     </div>
                     <div class="grid grid-cols-7 gap-1.5 w-full" id="setup-day-selector">
-                        <button type="button" class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">M</button>
-                        <button type="button" class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">T</button>
-                        <button type="button" class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">W</button>
-                        <button type="button" class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">T</button>
-                        <button type="button" class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">F</button>
-                        <button type="button" class="toggle-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">S</button>
-                        <button type="button" class="toggle-btn active aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center">S</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">M</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">T</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">W</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">T</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">F</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">S</button>
+                        <button type="button" onclick="selectSetupDay(this)" data-assigned="false" class="day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]">S</button>
                     </div>
                 </div>
 
@@ -135,6 +131,16 @@
 
         <main id="view-overview" class="flex-grow space-y-5 fade-in" style="display: none;">
             
+            <header class="flex justify-between items-center pb-2 pt-2">
+                <button type="button" onclick="backToSetup()" class="text-[#7E8689] hover:text-[#4CC7C4] transition-colors flex items-center gap-1 text-sm font-semibold uppercase tracking-widest">
+                    <span>←</span> Edit Setup
+                </button>
+                <div class="text-right">
+                    <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
+                    <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">Plan Overview</p>
+                </div>
+            </header>
+
             <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl shadow-lg relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-[#4CC7C4]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
                 
@@ -154,7 +160,7 @@
                         </div>
                         <p class="text-xs text-[#F4F1E7] opacity-80 mb-3">Building aerobic engine. 80% Easy/Long, 20% Strides.</p>
                         <button type="button" onclick="openWeek(1)" class="w-full bg-[#A7D7E8]/10 hover:bg-[#A7D7E8]/20 border border-[#A7D7E8]/30 text-[#A7D7E8] text-[10px] font-bold uppercase tracking-widest py-2 rounded-lg transition-colors">
-                            Enter Week 01
+                            Enter Active Phase
                         </button>
                     </div>
 
@@ -187,45 +193,37 @@
 
         <main id="view-dashboard" class="flex-grow space-y-4 fade-in" style="display: none;">
 
+            <header class="flex justify-between items-center pb-2 pt-2">
+                <button type="button" onclick="backToOverview()" class="text-[#7E8689] hover:text-[#4CC7C4] transition-colors flex items-center gap-1 text-sm font-semibold uppercase tracking-widest">
+                    <span>←</span> 16-Week Overview
+                </button>
+                <div class="text-right">
+                    <h1 class="text-2xl font-black brand-font tracking-widest text-[#4CC7C4] leading-none drop-shadow-sm">RUN</h1>
+                    <p class="text-[9px] text-[#7E8689] font-bold uppercase tracking-widest">Active Block</p>
+                </div>
+            </header>
+
             <section class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-4 rounded-2xl shadow-lg relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-[#4CC7C4]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
                 
-                <div class="flex justify-between items-start mb-1 relative z-10">
+                <div class="flex justify-between items-center relative z-10">
                     <div>
                         <span class="text-[9px] font-bold text-[#4CC7C4] tracking-widest uppercase flex items-center gap-1.5 mb-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#4CC7C4] animate-pulse"></span> <span id="dash-race-name">RACE NAME</span>
                         </span>
-                        <h2 class="text-xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none uppercase">WEEK 01 <span class="text-[#5F5742]">/ 16</span></h2>
+                        
+                        <div class="flex items-center gap-3 pt-1">
+                            <button onclick="changeWeek(-1)" class="text-[#7E8689] hover:text-[#4CC7C4] text-xl font-light focus:outline-none transition-colors px-2 pb-1 active:scale-90">‹</button>
+                            <h2 class="text-xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none uppercase text-center">WEEK <span id="dash-week-num">01</span></h2>
+                            <button onclick="changeWeek(1)" class="text-[#7E8689] hover:text-[#4CC7C4] text-xl font-light focus:outline-none transition-colors px-2 pb-1 active:scale-90">›</button>
+                        </div>
                     </div>
+                    
                     <div class="text-right">
-                        <span class="block text-[10px] text-[#7E8689] font-bold uppercase">Target</span>
-                        <span id="dash-target-time" class="block text-lg font-black brand-font text-[#F4F1E7] leading-none pt-0.5">3:50<span class="text-xs font-sans text-[#7E8689]"> hr</span></span>
+                        <span id="dash-phase-badge" class="block text-[10px] font-bold uppercase tracking-widest bg-[#A7D7E8]/10 text-[#A7D7E8] px-2 py-1 rounded mb-1">Base Phase</span>
+                        <span id="dash-target-time" class="block text-lg font-black brand-font text-[#F4F1E7] leading-none">3:50<span class="text-xs font-sans text-[#7E8689]"> hr</span></span>
                     </div>
                 </div>
-            </section>
-
-            <section class="bg-black/20 border border-[#5F5742]/30 p-4 rounded-xl">
-                <div class="flex justify-between items-center border-b border-[#5F5742]/30 pb-3 mb-3">
-                    <span class="text-[11px] font-bold text-[#F4F1E7] uppercase tracking-widest">Current Block</span>
-                    <span class="text-[10px] font-bold text-[#A7D7E8] uppercase tracking-widest bg-[#A7D7E8]/10 px-2 py-1 rounded">Base Phase</span>
-                </div>
-                <div class="flex justify-between mb-4">
-                    <div>
-                        <p class="text-2xl font-black brand-font text-[#F4F1E7] leading-none">32.0 <span class="text-sm font-sans text-[#7E8689] font-normal">km</span></p>
-                        <p class="text-[9px] text-[#7E8689] uppercase mt-1 tracking-wider">Est. Volume</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-black brand-font text-[#F4F1E7] leading-none">4</p>
-                        <p class="text-[9px] text-[#7E8689] uppercase mt-1 tracking-wider">Runs</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-black brand-font text-[#F4F1E7] leading-none">12 <span class="text-sm font-sans text-[#7E8689] font-normal">km</span></p>
-                        <p class="text-[9px] text-[#7E8689] uppercase mt-1 tracking-wider">Longest</p>
-                    </div>
-                </div>
-                <button type="button" onclick="backToOverview()" class="w-full bg-black/40 border border-[#5F5742]/30 text-[#7E8689] text-[10px] font-bold uppercase tracking-widest py-2.5 rounded-lg hover:text-[#F4F1E7] transition-colors active:scale-[0.98]">
-                    ← Back to 16-Week Overview
-                </button>
             </section>
 
             <section>
@@ -252,53 +250,20 @@
 
             <section>
                 <div class="flex justify-between gap-2 overflow-x-auto hide-scroll py-3 px-1 mt-1 -mx-1" id="dash-day-selector">
-                    <button type="button" onclick="selectDay('Mon', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/30 bg-black/20 flex flex-col items-center justify-center opacity-60 transition-all">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Mon</span>
-                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Easy</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Tue', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/30 bg-black/20 flex flex-col items-center justify-center opacity-60 transition-all">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Tue</span>
-                        <span class="text-xs font-bold text-[#7E8689] mt-1">Rest</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Wed', this)" class="active-day shrink-0 w-12 h-16 rounded-xl border border-[#4CC7C4] bg-[#4CC7C4]/10 shadow-[0_0_15px_rgba(76,199,196,0.15)] flex flex-col items-center justify-center transform scale-105 transition-all z-10">
-                        <span class="text-[9px] font-bold text-[#4CC7C4] uppercase">Wed</span>
-                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Int</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Thu', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center transition-all opacity-80">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Thu</span>
-                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Easy</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Fri', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center transition-all opacity-80">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Fri</span>
-                        <span class="text-xs font-bold text-[#7E8689] mt-1">Rest</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Sat', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center transition-all opacity-80">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Sat</span>
-                        <span class="text-xs font-bold text-[#7E8689] mt-1">Rest</span>
-                    </button>
-                    <button type="button" onclick="selectDay('Sun', this)" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center transition-all opacity-80">
-                        <span class="text-[9px] font-bold text-[#7E8689] uppercase">Sun</span>
-                        <span class="text-xs font-bold text-[#F4F1E7] mt-1">Long</span>
-                    </button>
-                </div>
+                    </div>
             </section>
 
             <section id="session-output" class="bg-black/15 backdrop-blur-md border border-[#5F5742]/40 p-5 rounded-2xl relative overflow-hidden">
                 </section>
-            
-            <p class="text-center text-[9px] text-[#5F5742] font-bold uppercase tracking-widest pt-2 pb-4">End of Dashboard</p>
         </main>
     </div>
 
     <div id="logModal" class="fixed inset-0 z-50 flex items-end justify-center hidden">
         <div class="absolute inset-0 bg-[#2E3A2C]/80 backdrop-blur-md" onclick="closeLogModal()"></div>
-        
         <div class="relative w-full max-w-md bg-[#1a241e] border-t border-[#5F5742]/50 rounded-t-3xl p-6 pb-12 modal-enter">
             <div class="w-12 h-1.5 bg-[#5F5742]/40 rounded-full mx-auto mb-6"></div>
-            
             <h3 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wider mb-1">LOG ACTIVITY</h3>
             <p class="text-xs text-[#7E8689] mb-6">Paces will recalibrate based on this effort.</p>
-
             <div class="space-y-4">
                 <div class="bg-black/30 border border-[#5F5742]/30 rounded-xl p-3 flex justify-between items-center">
                     <label class="text-xs font-bold text-[#7E8689] uppercase tracking-widest">Avg Pace</label>
@@ -307,16 +272,14 @@
                         <span class="text-[10px] text-[#7E8689]">/km</span>
                     </div>
                 </div>
-
                 <div class="bg-black/30 border border-[#5F5742]/30 rounded-xl p-3 flex justify-between items-center">
-                    <label class="text-xs font-bold text-[#7E8689] uppercase tracking-widest">Avg Heart Rate</label>
+                    <label class="text-xs font-bold text-[#7E8689] uppercase tracking-widest">Avg HR</label>
                     <div class="flex items-baseline gap-1">
                         <input type="number" placeholder="172" class="w-16 bg-transparent text-right text-xl font-bold text-[#F4F1E7] focus:outline-none placeholder:text-[#5F5742]">
                         <span class="text-[10px] text-[#7E8689]">bpm</span>
                     </div>
                 </div>
             </div>
-
             <button type="button" onclick="saveAndRecalculate()" class="w-full mt-8 bg-[#4CC7C4] text-[#1a241e] font-black text-sm uppercase tracking-widest py-4 rounded-xl active:scale-[0.98] transition-transform">
                 Save & Recalculate
             </button>
@@ -324,6 +287,71 @@
     </div>
 
     <script>
+        // --- 1. GUIDED DAY SETUP LOGIC ---
+        window.dayState = 0; // 0: Long, 1: Quality, 2: Easy, 3: Extra
+        window.easyCount = 0;
+        window.targetEasy = 2; 
+
+        window.resetDays = function() {
+            window.dayState = 0;
+            window.easyCount = 0;
+            document.querySelectorAll('.day-btn').forEach(b => {
+                b.className = 'day-btn aspect-square rounded-full border border-[#5F5742] bg-black/20 text-xs font-bold flex items-center justify-center transition-all text-[#F4F1E7]';
+                b.dataset.assigned = 'false';
+            });
+            const prompt = document.getElementById('day-prompt');
+            prompt.innerText = "1. Select Long Run day";
+            prompt.className = "text-[10px] text-[#D7883C] font-bold uppercase tracking-widest transition-colors";
+        }
+
+        document.querySelectorAll('#distance-selector .toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('#distance-selector .toggle-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                const dist = e.target.dataset.dist;
+                
+                if(dist === '5k' || dist === '10k') window.targetEasy = 1;
+                else if(dist === 'ultra') window.targetEasy = 3;
+                else window.targetEasy = 2; 
+                
+                resetDays(); 
+            });
+        });
+
+        window.selectSetupDay = function(btn) {
+            if(btn.dataset.assigned === 'true') return; 
+            btn.dataset.assigned = 'true';
+            const prompt = document.getElementById('day-prompt');
+
+            if(window.dayState === 0) {
+                btn.classList.add('bg-[#D7883C]', 'text-[#1a241e]', 'border-[#D7883C]');
+                window.dayState = 1;
+                prompt.innerText = "2. Select Quality Session";
+                prompt.className = "text-[10px] text-[#D6C444] font-bold uppercase tracking-widest transition-colors";
+            }
+            else if(window.dayState === 1) {
+                btn.classList.add('bg-[#D6C444]', 'text-[#1a241e]', 'border-[#D6C444]');
+                window.dayState = 2;
+                prompt.innerText = `3. Select ${window.targetEasy} Easy Run days`;
+                prompt.className = "text-[10px] text-[#4CC7C4] font-bold uppercase tracking-widest transition-colors";
+            }
+            else if(window.dayState === 2) {
+                btn.classList.add('bg-[#4CC7C4]', 'text-[#1a241e]', 'border-[#4CC7C4]');
+                window.easyCount++;
+                if(window.easyCount >= window.targetEasy) {
+                    window.dayState = 3;
+                    prompt.innerText = "Plan Optimized. Tap for extra volume.";
+                    prompt.className = "text-[10px] text-[#BFA882] font-bold uppercase tracking-widest transition-colors";
+                } else {
+                    prompt.innerText = `3. Select ${window.targetEasy - window.easyCount} more Easy Run(s)`;
+                }
+            }
+            else if(window.dayState === 3) {
+                btn.classList.add('bg-[#BFA882]', 'text-[#1a241e]', 'border-[#BFA882]');
+            }
+        }
+
+        // --- 2. DYNAMIC WORKOUT LOGIC GENERATOR ---
         const weeklyWorkouts = {
             'Mon': { type: 'run', title: '45 MIN RECOVERY', dist: '7.5', blocks: [{ name: 'Easy Pace', detail: '7.5 km', pace: '5:45' }] },
             'Tue': { type: 'rest', title: 'REST & RECOVER', detail: 'Focus on hydration and mobility.' },
@@ -334,26 +362,52 @@
             ]},
             'Thu': { type: 'run', title: 'EASY AEROBIC', dist: '6.0', blocks: [{ name: 'Zone 2', detail: '6.0 km', pace: '5:45' }] },
             'Fri': { type: 'rest', title: 'REST DAY', detail: 'Complete rest or light stretching.' },
-            'Sat': { type: 'rest', title: 'REST DAY', detail: 'Prep gear for tomorrow.' },
-            'Sun': { type: 'run', title: 'LONG RUN', dist: '14.0', blocks: [{ name: 'Endurance', detail: '14.0 km', pace: '5:45' }] }
+            'Sat': { type: 'rest', title: 'REST DAY', detail: 'Prep gear for tomorrow.' }
         };
 
-        const configLogic = { '5k': '3-4 Days', '10k': '3-4 Days', 'half': '4-5 Days', 'marathon': '4-5 Days', 'ultra': '5-6 Days' };
-
-        document.querySelectorAll('#distance-selector .toggle-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('#distance-selector .toggle-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                if (configLogic[e.target.dataset.dist]) {
-                    document.getElementById('rec-days').innerText = `Suggested: ${configLogic[e.target.dataset.dist]}`;
+        // Engine dynamically constructs Sunday based on Week Phase
+        function getSundayData(week) {
+            if (week <= 4) {
+                // Phase 1: Base
+                let dist = 14 + (week * 2);
+                return { type: 'run', title: 'BASE LONG RUN', dist: dist.toFixed(1), blocks: [
+                    { name: 'Endurance', detail: `${dist.toFixed(1)} km`, pace: '5:45' }
+                ]};
+            } else if (week <= 10) {
+                // Phase 2: Build (Progressive)
+                let baseDist = 16 + (week - 4); 
+                let fastDist = 4 + Math.floor((week - 4)/2); 
+                let total = baseDist + fastDist;
+                return { type: 'run', title: 'PROGRESSION LONG', dist: total.toFixed(1), blocks: [
+                    { name: 'Endurance', detail: `${baseDist.toFixed(1)} km`, pace: '5:45' },
+                    { name: 'Race Pace Finish', detail: `${fastDist.toFixed(1)} km`, pace: '5:27', highlight: true }
+                ]};
+            } else if (week <= 14) {
+                // Phase 3: Peak (Race Sim)
+                let reps = week % 2 === 0 ? 4 : 3; 
+                let repDist = 5;
+                let total = 3 + (reps * repDist) + (reps * 1) + 2; 
+                return { type: 'run', title: 'RACE SIMULATION', dist: total.toFixed(1), blocks: [
+                    { name: 'Warm Up', detail: '3.0 km', pace: '5:45' },
+                    { name: `Effort (x${reps})`, detail: `${repDist.toFixed(1)} km`, pace: '5:27', highlight: true },
+                    { name: `Float (x${reps})`, detail: '1.0 km', pace: '5:55' },
+                    { name: 'Cool Down', detail: '2.0 km', pace: '6:00' }
+                ]};
+            } else {
+                // Phase 4: Taper
+                if (week === 16) {
+                     return { type: 'run', title: 'RACE DAY', dist: '42.2', blocks: [
+                        { name: 'The Marathon', detail: '42.2 km', pace: '5:27', highlight: true }
+                    ]};
                 }
-            });
-        });
+                return { type: 'run', title: 'TAPER LONG RUN', dist: '16.0', blocks: [
+                    { name: 'Endurance', detail: '12.0 km', pace: '5:45' },
+                    { name: 'Marathon Pace', detail: '4.0 km', pace: '5:27', highlight: true }
+                ]};
+            }
+        }
 
-        document.querySelectorAll('#setup-day-selector .toggle-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => e.target.classList.toggle('active'));
-        });
-
+        // --- 3. NAVIGATION LOGIC ---
         window.switchViews = function(hideId, showId) {
             document.getElementById(hideId).style.display = 'none';
             document.getElementById(showId).style.display = 'block';
@@ -361,45 +415,91 @@
         }
 
         window.generateOverview = function() {
-            try {
-                const raceName = document.getElementById('input-race-name').value || "Unnamed Event";
-                const raceDate = document.getElementById('input-race-date').value;
-                const targetTime = document.getElementById('input-target-time').value || "N/A";
-                
-                let dateDisplay = "Date TBD";
-                if(raceDate) {
-                    const dateObj = new Date(raceDate);
-                    dateDisplay = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-                }
-
-                document.getElementById('overview-race-name').innerText = raceName;
-                document.getElementById('overview-race-date').innerText = dateDisplay;
-                document.getElementById('overview-target').innerText = `Target: ${targetTime}`;
-
-                document.getElementById('dash-race-name').innerText = raceName;
-                document.getElementById('dash-target-time').innerHTML = `${targetTime}<span class="text-xs font-sans text-[#7E8689]"> hr</span>`;
-                
-                const baseTime = document.getElementById('baseline-time').value || "Unknown";
-                const baseDistEl = document.getElementById('baseline-dist');
-                const baseDist = baseDistEl.options[baseDistEl.selectedIndex].text;
-                document.getElementById('dash-baseline').innerText = `Baseline: ${baseTime} ${baseDist}`;
-
-                switchViews('view-setup', 'view-overview');
-            } catch (err) {
-                console.error("Engine generation failed:", err);
+            const raceName = document.getElementById('input-race-name').value || "Unnamed Event";
+            const raceDate = document.getElementById('input-race-date').value;
+            const targetTime = document.getElementById('input-target-time').value || "N/A";
+            
+            let dateDisplay = "Date TBD";
+            if(raceDate) {
+                const dateObj = new Date(raceDate);
+                dateDisplay = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
             }
+
+            document.getElementById('overview-race-name').innerText = raceName;
+            document.getElementById('overview-race-date').innerText = dateDisplay;
+            document.getElementById('overview-target').innerText = `Target: ${targetTime}`;
+
+            document.getElementById('dash-race-name').innerText = raceName;
+            document.getElementById('dash-target-time').innerHTML = `${targetTime}<span class="text-xs font-sans text-[#7E8689]"> hr</span>`;
+            
+            const baseTime = document.getElementById('baseline-time').value || "Unknown";
+            const baseDistEl = document.getElementById('baseline-dist');
+            const baseDist = baseDistEl.options[baseDistEl.selectedIndex].text;
+            document.getElementById('dash-baseline').innerText = `Baseline: ${baseTime} ${baseDist}`;
+
+            switchViews('view-setup', 'view-overview');
         };
+
+        window.backToSetup = function() { switchViews('view-overview', 'view-setup'); };
+        window.backToOverview = function() { switchViews('view-dashboard', 'view-overview'); };
 
         window.openWeek = function(weekNum) {
             switchViews('view-overview', 'view-dashboard');
-            renderSession('Wed');
+            window.currentWeek = weekNum;
+            updateWeekUI();
+            generateDaysUI();
+            selectDay('Sun'); // Default to Sunday to show off the dynamic logic
         };
 
-        window.backToOverview = function() {
-            switchViews('view-dashboard', 'view-overview');
-        };
+        // --- 4. DASHBOARD WEEK & DAY LOGIC ---
+        window.currentWeek = 1;
+        
+        window.changeWeek = function(dir) {
+            window.currentWeek += dir;
+            if(window.currentWeek < 1) window.currentWeek = 1;
+            if(window.currentWeek > 16) window.currentWeek = 16;
+            updateWeekUI();
+            generateDaysUI(); 
+            selectDay('Sun'); 
+        }
 
-        window.selectDay = function(dayKey, btnElement) {
+        function updateWeekUI() {
+            let weekStr = window.currentWeek < 10 ? '0' + window.currentWeek : window.currentWeek;
+            document.getElementById('dash-week-num').innerText = weekStr;
+
+            let phaseName = "", phaseColor = "";
+            if(window.currentWeek <= 4) { phaseName = "Base Phase"; phaseColor = "bg-[#A7D7E8]/10 text-[#A7D7E8]"; }
+            else if(window.currentWeek <= 10) { phaseName = "Build Phase"; phaseColor = "bg-[#BFA882]/10 text-[#BFA882]"; }
+            else if(window.currentWeek <= 14) { phaseName = "Peak Phase"; phaseColor = "bg-[#4CC7C4]/10 text-[#4CC7C4]"; }
+            else { phaseName = "Taper Phase"; phaseColor = "bg-[#D7883C]/10 text-[#D7883C]"; }
+
+            const badge = document.getElementById('dash-phase-badge');
+            badge.innerText = phaseName;
+            badge.className = `block text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded mb-1 transition-colors ${phaseColor}`;
+        }
+
+        function generateDaysUI() {
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const container = document.getElementById('dash-day-selector');
+            
+            let html = days.map(d => {
+                let type = "Easy";
+                if(d === 'Sun') type = "Long";
+                if(d === 'Wed') type = "Int";
+                if((d === 'Tue' || d === 'Fri') && window.currentWeek % 2 !== 0) type = "Rest";
+                if((d === 'Mon' || d === 'Sat') && window.currentWeek % 2 === 0) type = "Rest";
+
+                return `
+                <button type="button" id="day-btn-${d}" onclick="selectDay('${d}', '${type}')" class="shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/30 bg-black/20 flex flex-col items-center justify-center opacity-60 transition-all">
+                    <span class="text-[9px] font-bold text-[#7E8689] uppercase">${d}</span>
+                    <span class="text-xs font-bold text-[#7E8689] mt-1">${type}</span>
+                </button>`;
+            }).join('');
+            
+            container.innerHTML = html;
+        }
+
+        window.selectDay = function(dayKey, typeOverride = null) {
             document.querySelectorAll('#dash-day-selector button').forEach(b => {
                 b.className = "shrink-0 w-12 h-16 rounded-xl border border-[#5F5742]/40 bg-black/15 flex flex-col items-center justify-center transition-all opacity-80";
                 b.querySelector('span:first-child').className = "text-[9px] font-bold text-[#7E8689] uppercase";
@@ -408,29 +508,34 @@
                 }
             });
 
-            btnElement.className = "active-day shrink-0 w-12 h-16 rounded-xl border border-[#4CC7C4] bg-[#4CC7C4]/10 shadow-[0_0_15px_rgba(76,199,196,0.15)] flex flex-col items-center justify-center transform scale-105 transition-all z-10";
-            btnElement.querySelector('span:first-child').className = "text-[9px] font-bold text-[#4CC7C4] uppercase";
-            
-            renderSession(dayKey);
+            const activeBtn = document.getElementById(`day-btn-${dayKey}`);
+            if(activeBtn) {
+                activeBtn.className = "active-day shrink-0 w-12 h-16 rounded-xl border border-[#4CC7C4] bg-[#4CC7C4]/10 shadow-[0_0_15px_rgba(76,199,196,0.15)] flex flex-col items-center justify-center transform scale-105 transition-all z-10";
+                activeBtn.querySelector('span:first-child').className = "text-[9px] font-bold text-[#4CC7C4] uppercase";
+            }
+
+            renderSession(dayKey, typeOverride || (activeBtn ? activeBtn.querySelector('span:last-child').innerText : 'Rest'));
         };
 
-        window.renderSession = function(dayKey) {
-            const data = weeklyWorkouts[dayKey];
+        window.renderSession = function(dayKey, type) {
             const output = document.getElementById('session-output');
             
-            if (data.type === 'rest') {
+            // Dynamic Data Fetch
+            let data = (dayKey === 'Sun') ? getSundayData(window.currentWeek) : weeklyWorkouts[dayKey];
+            
+            if (!data || data.type === 'rest' || type === 'Rest') {
                 output.innerHTML = `
-                    <div class="text-center py-6">
+                    <div class="text-center py-6 fade-in">
                         <div class="w-12 h-12 rounded-full bg-black/30 border border-[#5F5742]/50 flex items-center justify-center mx-auto mb-3">
                             <span class="text-[#7E8689] text-xl">☕</span>
                         </div>
-                        <h4 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide mb-2">${data.title}</h4>
-                        <p class="text-xs text-[#7E8689]">${data.detail}</p>
+                        <h4 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide mb-2">${data ? data.title : 'REST DAY'}</h4>
+                        <p class="text-xs text-[#7E8689]">${data ? data.detail : 'Focus on hydration and mobility.'}</p>
                     </div>
                 `;
             } else {
                 let blocksHtml = data.blocks.map(b => `
-                    <div class="flex justify-between items-center ${b.highlight ? 'bg-[#4CC7C4]/10 border border-[#4CC7C4]/30' : 'bg-black/20 border border-[#5F5742]/20'} p-3 rounded-lg mb-3">
+                    <div class="flex justify-between items-center ${b.highlight ? 'bg-[#4CC7C4]/10 border border-[#4CC7C4]/30 shadow-[0_0_10px_rgba(76,199,196,0.05)]' : 'bg-black/20 border border-[#5F5742]/20'} p-3 rounded-lg mb-3">
                         <div class="flex items-center gap-3">
                             <div class="w-1.5 h-6 ${b.highlight ? 'bg-[#4CC7C4]' : 'bg-[#7E8689]'} rounded-full"></div>
                             <div>
@@ -445,20 +550,20 @@
                 `).join('');
 
                 output.innerHTML = `
-                    <div class="flex justify-between items-end border-b border-[#5F5742]/30 pb-3 mb-4">
-                        <div>
-                            <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-1">${dayKey}'s Route</h3>
-                            <h4 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none">${data.title}</h4>
+                    <div class="fade-in">
+                        <div class="flex justify-between items-end border-b border-[#5F5742]/30 pb-3 mb-4">
+                            <div>
+                                <h3 class="text-sm font-bold text-[#7E8689] uppercase tracking-widest mb-1">${dayKey}'s Route</h3>
+                                <h4 class="text-2xl font-black brand-font text-[#F4F1E7] tracking-wide leading-none">${data.title}</h4>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-[#7E8689]">Est. Dist.</p>
+                                <p class="text-lg font-black brand-font text-[#4CC7C4]">${data.dist} <span class="text-xs font-sans font-normal text-[#F4F1E7]">km</span></p>
+                            </div>
                         </div>
-                        <div class="text-right">
-                            <p class="text-xs text-[#7E8689]">Est. Dist.</p>
-                            <p class="text-lg font-black brand-font text-[#4CC7C4]">${data.dist} <span class="text-xs font-sans font-normal text-[#F4F1E7]">km</span></p>
-                        </div>
+                        <div class="mb-6 space-y-3">${blocksHtml}</div>
+                        <button type="button" onclick="openLogModal()" class="w-full bg-[#4CC7C4]/10 hover:bg-[#4CC7C4]/20 active:scale-[0.98] border border-[#4CC7C4]/50 text-[#4CC7C4] font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all">Log Activity</button>
                     </div>
-                    <div class="mb-6">${blocksHtml}</div>
-                    <button type="button" onclick="openLogModal()" class="w-full bg-[#4CC7C4]/10 hover:bg-[#4CC7C4]/20 active:scale-[0.98] border border-[#4CC7C4]/50 text-[#4CC7C4] font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all">
-                        Log Activity
-                    </button>
                 `;
             }
         };
